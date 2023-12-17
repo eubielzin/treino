@@ -5,6 +5,7 @@ import Universidade.Model.Cursos;
 import Universidade.dto.request.AlunoRegistro;
 import Universidade.respository.AlunoRepository;
 import Universidade.respository.CursoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class AlunoService {
         aluno.setEndereco(alunoRegistro.getEndereco());
         aluno.setNome(alunoRegistro.getNome());
         aluno.setNumeroDeTelefone(alunoRegistro.getNumeroDeTelefone());
-//        aluno.setDataDeCadastroA(Date.from(Instant.now());
+      //  aluno.setDataDeCadastroA(Date.from(Instant.now());
 
         Long idCurso = alunoRegistro.getIdCurso();
         if (idCurso != null) {
@@ -48,16 +49,37 @@ public class AlunoService {
 
         return alunoRegistro;
     }
-    public Alunos update(Alunos alunos,Long id){
-        Alunos a = alunoRepository.getReferenceById(id);
-        a.setCep(alunos.getCep());
-        a.setEmail(alunos.getEmail());
-        a.setCpf(alunos.getCpf());
-        a.setEndereco(alunos.getEndereco());
-        a.setNome(alunos.getNome());
-        a.setNumeroDeTelefone(alunos.getNumeroDeTelefone());
-        alunoRepository.save(a);
-        return a;
+    @Transactional
+    public AlunoRegistro update(AlunoRegistro alunoRegistro,Long id) {
+        Alunos a = new Alunos();
+        try {
+            a = alunoRepository.getReferenceById(id);
+            if (!alunoRepository.existsById(id)) {
+                throw new EntityNotFoundException("Alunos com id " + id + " Não encontrado");
+            }
+            a.setCep(alunoRegistro.getCep());
+            a.setEmail(alunoRegistro.getEmail());
+            a.setCpf(alunoRegistro.getCpf());
+            a.setEndereco(alunoRegistro.getEndereco());
+            a.setNome(alunoRegistro.getNome());
+            a.setNumeroDeTelefone(alunoRegistro.getNumeroDeTelefone());
+            alunoRepository.save(a);
+            return alunoRegistro;
+
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return alunoRegistro;
+    }public void deletarAluno(long id) {
+        Optional<Alunos> aluno = alunoRepository.findById(id);
+
+        if (aluno != null) {
+            alunoRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Aluno não encontrado com ID: " + id);
+        }
     }
 
 }

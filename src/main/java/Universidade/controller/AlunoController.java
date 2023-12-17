@@ -28,12 +28,17 @@ public class AlunoController {
     }
 
     @PutMapping(value = "/{id}")
-    public Alunos update(@RequestBody Alunos alunos, @PathVariable Long id){
-      return alunoService.update(alunos, id);
+    public AlunoRegistro update(@RequestBody AlunoRegistro alunoRegistro, @PathVariable Long id){
+        alunoService.create(alunoRegistro);
+        return alunoRegistro;
     }
     @PostMapping
     public  AlunoRegistro create(@RequestBody AlunoRegistro alunoRegistro){
         alunoService.create(alunoRegistro);
         return alunoRegistro;
+    }
+    @DeleteMapping(value = "/{id}")
+    public void deletarAluno(@PathVariable Long id){
+        alunoService.deletarAluno(id);
     }
 }

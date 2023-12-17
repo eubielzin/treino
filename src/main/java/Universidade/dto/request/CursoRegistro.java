@@ -5,41 +5,41 @@ import java.util.Date;
 
 public class CursoRegistro {
 
-    private  String nomeDoCursoDTO;
+    private  String nomeDoCurso;
 
-    private String cargaHorariaDTO;
-    private Date dataDeCadastroCDTO;
-    private String codigoDoCursoDTO;
+    private String cargaHoraria;
+    private Date dataDeCadastroC;
+    private String codigoDoCurso;
 
-    public String getNomeDoCursoDTO() {
-        return nomeDoCursoDTO;
+    public String getNomeDoCurso() {
+        return nomeDoCurso;
     }
 
-    public void setNomeDoCursoDTO(String nomeDoCursoDTO) {
-        this.nomeDoCursoDTO = nomeDoCursoDTO;
+    public void setNomeDoCurso(String nomeDoCurso) {
+        this.nomeDoCurso = nomeDoCurso;
     }
 
-    public String getCargaHorariaDTO() {
-        return cargaHorariaDTO;
+    public String getCargaHoraria() {
+        return cargaHoraria;
     }
 
-    public void setCargaHorariaDTO(String cargaHorariaDTO) {
-        this.cargaHorariaDTO = cargaHorariaDTO;
+    public void setCargaHoraria(String cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
     }
 
-    public Date getDataDeCadastroCDTO() {
-        return dataDeCadastroCDTO;
+    public Date getDataDeCadastroC() {
+        return dataDeCadastroC;
     }
 
-    public void setDataDeCadastroCDTO(Date dataDeCadastroCDTO) {
-        this.dataDeCadastroCDTO = dataDeCadastroCDTO;
+    public void setDataDeCadastroC(Date dataDeCadastroC) {
+        this.dataDeCadastroC = dataDeCadastroC;
     }
 
-    public String getCodigoDoCursoDTO() {
-        return codigoDoCursoDTO;
+    public String getCodigoDoCurso() {
+        return codigoDoCurso;
     }
 
-    public void setCodigoDoCursoDTO(String codigoDoCursoDTO) {
-        this.codigoDoCursoDTO = codigoDoCursoDTO;
+    public void setCodigoDoCurso(String codigoDoCurso) {
+        this.codigoDoCurso = codigoDoCurso;
     }
 }
