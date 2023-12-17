@@ -11,7 +11,7 @@ import java.util.List;
 public class Cursos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(name = "Nome_Do_Curso")
     private  String nomeDoCurso;
     @Column(name = "Data_De_CadastroC")
@@ -24,18 +24,18 @@ public class Cursos {
     public Cursos() {
     }
 
-    public Cursos(Integer id, String nomeDoCurso, Date dataDeCadastroC, String cargaHoraria) {
+    public Cursos(Long id, String nomeDoCurso, Date dataDeCadastroC, String cargaHoraria) {
         this.id = id;
         this.nomeDoCurso = nomeDoCurso;
         this.dataDeCadastroC = dataDeCadastroC;
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

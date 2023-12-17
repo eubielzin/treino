@@ -1,5 +1,7 @@
 package Universidade.Model;
 
+
+
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,8 +12,6 @@ public class Alunos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "Codigo_Do_Aluno")
-    private String codigoDoAluno;
     @Column(name = "Nome")
     private String nome;
     @Column(name = "CPF")
@@ -28,15 +28,14 @@ public class Alunos {
     private Date dataDeCadastroA;
 
     @ManyToOne
-    @JoinColumn (name = "Curso")
+    @JoinColumn (name = "Curso",referencedColumnName = "id")
     private Cursos NomeCursos;
 
     public Alunos() {
     }
 
-    public Alunos(Integer id, String codigoDoAluno, String nome, String cpf, String endereco, String cep, String email, String numeroDeTelefone, Date dataDeCadastroA, Cursos nomeCursos) {
+    public Alunos(Integer id, String nome, String cpf, String endereco, String cep, String email, String numeroDeTelefone, Date dataDeCadastroA, Cursos nomeCursos) {
         this.id = id;
-        this.codigoDoAluno = codigoDoAluno;
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -53,14 +52,6 @@ public class Alunos {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCodigoDoAluno() {
-        return codigoDoAluno;
-    }
-
-    public void setCodigoDoAluno(String codigoDoAluno) {
-        this.codigoDoAluno = codigoDoAluno;
     }
 
     public String getNome() {

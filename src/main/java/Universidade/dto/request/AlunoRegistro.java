@@ -1,60 +1,76 @@
 package Universidade.dto.request;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class AlunoRegistro {
 
 
-    private String nomeDTO;
-    private String cpfDTO;
-    private String enderecoDTO;
-    private String cepDTO;
-    private String emailDTO;
+    private String nome;
+    private String cpf;
+    private String endereco;
+    private String cep;
+    private String email;
     private String numeroDeTelefone;
-    private String codigoDoAlunoDTO;
-    private Date dataDeCadastrodoDTO;
-    private  Integer IdCurso;
+    @DateTimeFormat(pattern = "DD/MM/yyyy")
+    private Date dataDeCadastrodo;
+    private  Long IdCurso;
 
-
-    public String getNomeDTO() {
-        return nomeDTO;
+    public AlunoRegistro() {
     }
 
-    public void setNomeDTO(String nomeDTO) {
-        this.nomeDTO = nomeDTO;
+    public AlunoRegistro(String nome, String cpf, String endereco, String cep, String email, String numeroDeTelefone, Date dataDeCadastrodo, Long idCurso) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.endereco = endereco;
+        this.cep = cep;
+        this.email = email;
+        this.numeroDeTelefone = numeroDeTelefone;
+        this.dataDeCadastrodo = dataDeCadastrodo;
+        IdCurso = idCurso;
     }
 
-    public String getCpfDTO() {
-        return cpfDTO;
+    public String getNome() {
+        return nome;
     }
 
-    public void setCpfDTO(String cpfDTO) {
-        this.cpfDTO = cpfDTO;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getEnderecoDTO() {
-        return enderecoDTO;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setEnderecoDTO(String enderecoDTO) {
-        this.enderecoDTO = enderecoDTO;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getCepDTO() {
-        return cepDTO;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setCepDTO(String cepDTO) {
-        this.cepDTO = cepDTO;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public String getEmailDTO() {
-        return emailDTO;
+    public String getCep() {
+        return cep;
     }
 
-    public void setEmailDTO(String emailDTO) {
-        this.emailDTO = emailDTO;
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNumeroDeTelefone() {
@@ -65,27 +81,19 @@ public class AlunoRegistro {
         this.numeroDeTelefone = numeroDeTelefone;
     }
 
-    public String getCodigoDoAlunoDTO() {
-        return codigoDoAlunoDTO;
+    public Date getDataDeCadastrodo() {
+        return dataDeCadastrodo;
     }
 
-    public void setCodigoDoAlunoDTO(String codigoDoAlunoDTO) {
-        this.codigoDoAlunoDTO = codigoDoAlunoDTO;
+    public void setDataDeCadastrodo(Date dataDeCadastrodo) {
+        this.dataDeCadastrodo = dataDeCadastrodo;
     }
 
-    public Date getDataDeCadastrodoDTO() {
-        return dataDeCadastrodoDTO;
-    }
-
-    public void setDataDeCadastrodoDTO(Date dataDeCadastrodoDTO) {
-        this.dataDeCadastrodoDTO = dataDeCadastrodoDTO;
-    }
-
-    public Integer getIdCurso() {
+    public Long getIdCurso() {
         return IdCurso;
     }
 
-    public void setIdCurso(Integer idCurso) {
+    public void setIdCurso(Long idCurso) {
         IdCurso = idCurso;
     }
 }

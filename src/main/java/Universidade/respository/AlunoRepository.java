@@ -13,6 +13,6 @@ import java.util.Optional;
 
 @Repository
 @EnableJpaRepositories
-public interface AlunoRepository extends JpaRepository<Alunos,Integer> {
+public interface AlunoRepository extends JpaRepository<Alunos,Long> {
 
 }

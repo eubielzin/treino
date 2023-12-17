@@ -4,34 +4,51 @@ import Universidade.Model.Alunos;
 import Universidade.Model.Cursos;
 import Universidade.dto.request.AlunoRegistro;
 import Universidade.respository.AlunoRepository;
+import Universidade.respository.CursoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.Date;
+import java.util.Optional;
 
 @Service
 public class AlunoService {
     @Autowired
     private final AlunoRepository alunoRepository;
+    @Autowired
+    private final CursoRepository cursoRepository;
 
-
-    public AlunoService(AlunoRepository alunoRepository) {
+    public AlunoService(AlunoRepository alunoRepository, CursoRepository cursoRepository) {
         this.alunoRepository = alunoRepository;
+        this.cursoRepository = cursoRepository;
     }
-    public AlunoRegistro create(AlunoRegistro alunoRegistro){
-        Alunos a = new Alunos();
-        a.setCep(alunoRegistro.getCepDTO());
-        a.setEmail(alunoRegistro.getEmailDTO());
-        a.setCpf(alunoRegistro.getCpfDTO());
-        a.setEndereco(alunoRegistro.getEnderecoDTO());
-        a.setNome(alunoRegistro.getNomeDTO());
-        a.setNumeroDeTelefone(alunoRegistro.getNumeroDeTelefone());
-        Cursos curso = new Cursos();
-        curso.setId(alunoRegistro.getIdCurso());
-        a.setNomeCursos(curso);
-        Alunos dto = alunoRepository.save(a);
-        alunoRegistro.setIdCurso(dto.getId());
+
+    @Transactional
+    public AlunoRegistro create(AlunoRegistro alunoRegistro) {
+        Alunos aluno = new Alunos();
+
+        aluno.setCep(alunoRegistro.getCep());
+        aluno.setEmail(alunoRegistro.getEmail());
+        aluno.setCpf(alunoRegistro.getCpf());
+        aluno.setEndereco(alunoRegistro.getEndereco());
+        aluno.setNome(alunoRegistro.getNome());
+        aluno.setNumeroDeTelefone(alunoRegistro.getNumeroDeTelefone());
+//        aluno.setDataDeCadastroA(Date.from(Instant.now());
+
+        Long idCurso = alunoRegistro.getIdCurso();
+        if (idCurso != null) {
+            Optional<Cursos> cursoOptional = cursoRepository.findById(Math.toIntExact(idCurso));
+            cursoOptional.ifPresent(aluno::setNomeCursos);
+        }
+
+        Alunos alunoSalvo = alunoRepository.save(aluno);
+        alunoRegistro.setIdCurso(alunoSalvo.getNomeCursos() != null ? Long.valueOf(alunoSalvo.getNomeCursos().getId()) : null);
+
         return alunoRegistro;
     }
-    public Alunos update(Alunos alunos,Integer id){
+    public Alunos update(Alunos alunos,Long id){
         Alunos a = alunoRepository.getReferenceById(id);
         a.setCep(alunos.getCep());
         a.setEmail(alunos.getEmail());

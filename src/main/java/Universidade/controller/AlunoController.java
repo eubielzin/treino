@@ -23,12 +23,12 @@ public class AlunoController {
         return  alunoRepository.findAll();
     }
     @GetMapping(path = "/{id}")
-    public Optional<Alunos> ListaAlunosPorId(@PathVariable int id){
+    public Optional<Alunos> ListaAlunosPorId(@PathVariable Long id){
         return alunoRepository.findById(id);
     }
 
     @PutMapping(value = "/{id}")
-    public Alunos update(@RequestBody Alunos alunos, @PathVariable Integer id){
+    public Alunos update(@RequestBody Alunos alunos, @PathVariable Long id){
       return alunoService.update(alunos, id);
     }
     @PostMapping
