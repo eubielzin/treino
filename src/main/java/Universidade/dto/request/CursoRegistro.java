@@ -4,6 +4,7 @@ package Universidade.dto.request;
 import java.util.Date;
 
 public class CursoRegistro {
+    private Integer idC;
 
     private  String nomeDoCurso;
 

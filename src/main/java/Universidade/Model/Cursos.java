@@ -11,7 +11,7 @@ import java.util.List;
 public class Cursos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     @Column(name = "Nome_Do_Curso")
     private  String nomeDoCurso;
     @Column(name = "Data_De_CadastroC")
@@ -19,23 +19,23 @@ public class Cursos {
     @Column(name = "Carga_Horaria")
     private String cargaHoraria;
     @OneToMany(mappedBy = "NomeCursos")
-    private List<Alunos> listaAlunos ;
+    private List<Alunos> listaAlunos = new ArrayList<>() ;
 
     public Cursos() {
     }
 
-    public Cursos(Long id, String nomeDoCurso, Date dataDeCadastroC, String cargaHoraria) {
+    public Cursos(Integer id, String nomeDoCurso, Date dataDeCadastroC, String cargaHoraria) {
         this.id = id;
         this.nomeDoCurso = nomeDoCurso;
         this.dataDeCadastroC = dataDeCadastroC;
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

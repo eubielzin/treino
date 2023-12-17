@@ -23,7 +23,7 @@ public class AlunoController {
         return  alunoRepository.findAll();
     }
     @GetMapping(path = "/{id}")
-    public Optional<Alunos> ListaAlunosPorId(@PathVariable Long id){
+    public Optional<Alunos> ListaAlunosPorId(@PathVariable Integer id){
         return alunoRepository.findById(id);
     }
 
@@ -38,7 +38,7 @@ public class AlunoController {
         return alunoRegistro;
     }
     @DeleteMapping(value = "/{id}")
-    public void deletarAluno(@PathVariable Long id){
+    public void deletarAluno(@PathVariable Integer id){
         alunoService.deletarAluno(id);
     }
 }

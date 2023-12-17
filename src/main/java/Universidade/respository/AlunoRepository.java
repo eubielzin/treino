@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @EnableJpaRepositories
-public interface AlunoRepository extends JpaRepository<Alunos,Long> {
+public interface AlunoRepository extends JpaRepository<Alunos,Integer> {
 
 }
