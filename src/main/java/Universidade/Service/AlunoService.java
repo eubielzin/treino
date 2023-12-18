@@ -34,7 +34,7 @@ public class AlunoService {
         aluno.setEndereco(alunoRegistro.getEndereco());
         aluno.setNome(alunoRegistro.getNome());
         aluno.setNumeroDeTelefone(alunoRegistro.getNumeroDeTelefone());
-      //  aluno.setDataDeCadastroA(Date.from(Instant.now());
+        //aluno.setDataDeCadastroA(Date.from(Instant.now());
 
         Long idCurso = alunoRegistro.getIdCurso();
         if (idCurso != null) {

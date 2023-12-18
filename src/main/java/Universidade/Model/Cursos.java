@@ -12,7 +12,7 @@ public class Cursos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "Nome_Do_Curso")
+        @Column(name = "Nome_Do_Curso")
     private  String nomeDoCurso;
     @Column(name = "Data_De_CadastroC")
     private Date dataDeCadastroC;
@@ -24,7 +24,7 @@ public class Cursos {
     public Cursos() {
     }
 
-    public Cursos(Integer id, String nomeDoCurso, Date dataDeCadastroC, String cargaHoraria) {
+    public Cursos(String nomeDoCurso) {
         this.id = id;
         this.nomeDoCurso = nomeDoCurso;
         this.dataDeCadastroC = dataDeCadastroC;
